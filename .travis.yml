@@ -1,0 +1,18 @@
+language: node_js
+
+node_js:
+  - '10'
+
+before_script:
+  - npm install
+  - cd examples && npm install
+
+script:
+  - npm run lint
+  - npm run typecheck
+  - npm run test
+  - npm run build && npm run bundlesize
+  - cd examples && npm run typecheck
+
+notifications:
+  email: false

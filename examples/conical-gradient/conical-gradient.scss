@@ -1,0 +1,78 @@
+.conical-gauge-wrapper {
+  $chart-size: 400px;
+  $chart-padding: 100px;
+  $label-width: 160px;
+  $font-family: 'Open Sans', sans-serif;
+  $color-accent: #7199e3;
+  $color-white: #fff;
+  $color-text: #0f3e48;
+
+  background-color: $color-white;
+  width: $chart-size + $chart-padding;
+  height: $chart-size + $chart-padding;
+  font-family: $font-family;
+  position: relative;
+
+  .conical-gauge {
+    position: relative;
+    width: $chart-size;
+    height: $chart-size;
+    left: $chart-padding / 2;
+    top: $chart-padding / 2;
+  }
+
+  .label {
+    color: $color-text;
+    font-size: 66px;
+    letter-spacing: -1.5px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -60%);
+  }
+
+  .controls {
+    position: absolute;
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 65px;
+
+    .control {
+      font-size: 16px;
+      padding: 3px 20px;
+      text-decoration: none;
+      border: 1px solid $color-accent;
+      color: $color-accent;
+      font-family: $font-family;
+      text-align: center;
+      cursor: pointer;
+      background-color: $color-white;
+      transition: 0.2s all;
+
+      &:first-child {
+        border-radius: 7px 0 0 7px;
+      }
+
+      &:not(:first-child) {
+        margin-left: -2px;
+      }
+
+      &:last-child {
+        border-radius: 0 7px 7px 0;
+      }
+
+      &:focus {
+        box-shadow: none;
+        outline: none;
+        background-color: $color-accent;
+        border-color: $color-accent;
+        color: $color-white;
+      }
+
+      &:active {
+        background-color: darken($color-accent, 10%);
+      }
+    }
+  }
+}

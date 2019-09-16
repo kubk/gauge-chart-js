@@ -1,0 +1,41 @@
+{
+  "name": "gauge-chart-js",
+  "version": "1.0.0",
+  "description": "A tiny library for rendering gauge charts. Supports conical/polar gradients, animation timing functions, custom labels/tooltips.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "bundlesize": "bundlesize",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "typecheck": "tsc --noEmit",
+    "lint": "npx tslint -t stylish --project tsconfig.json",
+    "build": "npm run typecheck && parcel build --experimental-scope-hoisting src/index.ts --no-source-maps --detailed-report"
+  },
+  "keywords": [
+    "gauge",
+    "chart",
+    "conical gradient",
+    "polar gradient",
+    "circle progress"
+  ],
+  "author": "http://github.com/kubk",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "bundlesize": "^0.18.0",
+    "jest": "^24.9.0",
+    "parcel": "^1.12.3",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.1.0",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
+  },
+  "bundlesize": [
+    {
+      "path": "./dist/index.js",
+      "maxSize": "2 kB"
+    }
+  ]
+}

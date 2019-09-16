@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./lib",
+    "strict": true,
+    "lib": ["dom", "es2018"]
+  },
+  "include": ["conical-gradient",
+    "multiple-gauges",
+    "countdown-gauge"
+  ],
+  "exclude": ["node_modules"]
+}

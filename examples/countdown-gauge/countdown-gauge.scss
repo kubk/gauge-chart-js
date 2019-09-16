@@ -1,0 +1,27 @@
+.countdown-gauge-background {
+  $chart-size: 400px;
+  $chart-padding: 100px;
+  $label-width: 160px;
+
+  background-color: white;
+  width: $chart-size + $chart-padding;
+  height: $chart-size + $chart-padding;
+  font-family: 'Open Sans', sans-serif;
+
+  .timer {
+    position: absolute;
+    font-size: 6em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    color: #fd9eaa;
+  }
+
+  .countdown-gauge {
+    position: relative;
+    width: $chart-size;
+    height: $chart-size;
+    left: $chart-padding / 2;
+    top: $chart-padding / 2;
+  }
+}

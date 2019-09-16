@@ -1,0 +1,25 @@
+.gauge-background {
+  $chart-size: 400px;
+  $chart-padding: 100px;
+  $label-width: 160px;
+
+  background-color: white;
+  width: $chart-size + $chart-padding;
+  height: $chart-size + $chart-padding;
+  font-family: 'Open Sans', sans-serif;
+
+  .label {
+    position: absolute;
+    text-align: right;
+    font-weight: bold;
+    width: $label-width;
+  }
+
+  .multiple-gauge {
+    position: relative;
+    width: $chart-size;
+    height: $chart-size;
+    left: $chart-padding / 2;
+    top: $chart-padding / 2;
+  }
+}
