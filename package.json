@@ -12,6 +12,7 @@
     "lint": "npx tslint -t stylish --project tsconfig.json",
     "build": "npm run typecheck && parcel build --experimental-scope-hoisting src/index.ts --no-source-maps --detailed-report"
   },
+  "types": "lib/index.d.ts",
   "keywords": [
     "gauge",
     "chart",
@@ -20,6 +21,7 @@
     "circle progress"
   ],
   "author": "http://github.com/kubk",
+  "repository": "https://github.com/kubk/gauge-chart-js",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
