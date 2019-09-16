@@ -1,8 +1,8 @@
 {
   "name": "gauge-chart-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tiny library for rendering gauge charts. Supports conical/polar gradients, animation timing functions, custom labels/tooltips.",
-  "main": "index.ts",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",

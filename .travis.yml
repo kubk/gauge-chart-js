@@ -5,14 +5,13 @@ node_js:
 
 before_script:
   - npm install
-  - cd examples && npm install
+  - cd examples && npm install && cd ..
 
 script:
   - npm run lint
   - npm run typecheck
   - npm run test
   - npm run build && npm run bundlesize
-  - cd examples && npm run typecheck
 
 notifications:
   email: false
