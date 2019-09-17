@@ -12,6 +12,7 @@ script:
   - npm run typecheck
   - npm run test
   - npm run build && npm run bundlesize
+  - cd examples && npm run test
 
 notifications:
   email: false

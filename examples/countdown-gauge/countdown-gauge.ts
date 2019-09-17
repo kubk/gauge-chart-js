@@ -24,20 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const maxValue = sharedConfig.toAngle - sharedConfig.fromAngle;
   const gaugeBackground = new Gauge({
     ...sharedConfig,
-    value: maxValue,
     color: '#ebebeb',
     animationDuration: 0
   });
 
-  gaugeBackground.draw();
+  gaugeBackground.setValue(maxValue);
 
   const mainGauge = new Gauge({
     ...sharedConfig,
-    value: maxValue,
     color: '#fd9eaa'
   });
 
-  mainGauge.draw({ animationDuration: 0 }).then(() => {
+  mainGauge.setValue(maxValue, { animationDuration: 0 }).then(() => {
     setTimeout(() => {
       const interval = setInterval(() => {
         timer--;

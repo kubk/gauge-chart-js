@@ -45,20 +45,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const gaugeBackground = new Gauge({
     ...sharedConfig,
-    color: '#f5f5f5',
-    value: maxValue
+    color: '#f5f5f5'
   });
-  gaugeBackground.draw();
+  gaugeBackground.setValue(maxValue);
 
   const gaugeMain = new Gauge({
     ...sharedConfig,
     colors: gradstop({
       stops: maxValue,
       colorArray: ['#D16BA5', '#86A8E7', '#5FFBF1']
-    }),
-    value
+    })
   });
-  gaugeMain.draw();
+  gaugeMain.setValue(value);
 
   const controls = document.querySelector('.controls') as HTMLElement;
   controls.addEventListener('click', event => {

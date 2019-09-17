@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   const backgroundConfig = {
     ...sharedConfig,
-    value: maxValue,
     color: '#ebebeb'
   };
 
@@ -50,62 +49,58 @@ document.addEventListener('DOMContentLoaded', () => {
     ...backgroundConfig,
     gaugeRadius: 45
   });
-  gaugeHumanBackground.draw().then(() => {
+  gaugeHumanBackground.setValue(maxValue).then(() => {
     renderLabel(gaugeHumanBackground, 'Human Resources', '#8067dc');
     renderPercents(gaugeHumanBackground, maxValue);
   });
   const gaugeHumanMain = new Gauge({
     ...sharedConfig,
-    value: maxValue * 0.69,
     color: '#8067dc',
     gaugeRadius: 45
   });
-  gaugeHumanMain.draw();
+  gaugeHumanMain.setValue(maxValue * 0.69);
 
   const gaugeDistributionBackground = new Gauge({
     ...backgroundConfig,
     gaugeRadius: 36
   });
-  gaugeDistributionBackground.draw().then(() => {
+  gaugeDistributionBackground.setValue(maxValue).then(() => {
     renderLabel(gaugeDistributionBackground, 'Distribution', '#6870db');
   });
   const gaugeDistributionMain = new Gauge({
     ...sharedConfig,
-    value: maxValue * 0.9,
     color: '#6870db',
     gaugeRadius: 36
   });
-  gaugeDistributionMain.draw();
+  gaugeDistributionMain.setValue(maxValue * 0.9);
 
   const gaugeMarketingBackground = new Gauge({
     ...backgroundConfig,
     gaugeRadius: 27
   });
-  gaugeMarketingBackground.draw().then(() => {
+  gaugeMarketingBackground.setValue(maxValue).then(() => {
     renderLabel(gaugeMarketingBackground, 'Marketing', '#6894dd');
   });
   const gaugeMarketingMain = new Gauge({
     ...sharedConfig,
-    value: maxValue * 0.33,
     color: '#6894dd',
     gaugeRadius: 27
   });
-  gaugeMarketingMain.draw();
+  gaugeMarketingMain.setValue(maxValue * 0.33);
 
   const gaugeResearchBackground = new Gauge({
     ...backgroundConfig,
     gaugeRadius: 18
   });
-  gaugeResearchBackground.draw().then(() => {
+  gaugeResearchBackground.setValue(maxValue).then(() => {
     renderLabel(gaugeResearchBackground, 'Research', '#67b7dc');
   });
   const gaugeResearchMain = new Gauge({
     ...sharedConfig,
-    value: maxValue * 0.72,
     color: '#67b7dc',
     gaugeRadius: 18
   });
-  gaugeResearchMain.draw();
+  gaugeResearchMain.setValue(maxValue * 0.72);
 
   const gauges = [
     gaugeHumanMain,

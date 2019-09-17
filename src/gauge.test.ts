@@ -12,17 +12,16 @@ describe('Gauge', () => {
     }).toThrow();
 
     expect(() => {
-      const gauge = new Gauge({ value: 1, container });
+      const gauge = new Gauge({ container });
     }).toThrow();
   });
 
   it('should render gauge', cb => {
     const gauge = new Gauge({
-      value: 50,
       container,
       color: '#f00'
     });
-    gauge.draw().then(() => {
+    gauge.setValue(50).then(() => {
       expect(document.body.innerHTML).not.toBe(initialHtml);
       cb();
     });
@@ -30,11 +29,10 @@ describe('Gauge', () => {
 
   it('should allow to get element metadata', cb => {
     const gauge = new Gauge({
-      value: 50,
       container,
       color: '#f00'
     });
-    gauge.draw().then(() => {
+    gauge.setValue(50).then(() => {
       const point1 = gauge.getElementAtValue(1);
       const point2 = gauge.getElementAtValue(40);
       expect(point1.metadata.angle).toBeLessThan(point2.metadata.angle);

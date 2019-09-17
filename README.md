@@ -16,11 +16,10 @@ import { cubicBezier, Gauge } from 'gauge-chart-js';
 
 const gauge = new Gauge({
   container: document.querySelector('.root'),
-  value: 50,
   color: '#0f0'
 });
 
-gauge.draw();
+gauge.setValue(50);
 
 ```
 
@@ -40,7 +39,6 @@ Easing functions cheat sheet: https://matthewlein.com/tools/ceaser
 ### Options
 | Name           | Description                                                      | Required  | Default value     | Type   |
 | ---            | ---                                                                                                       | ---       | ---               | ---               |
-| `value`      | Gauge value                                                        | Yes       | -       | `number`          |
 | `container`      | The HTML element that act as a container for the gauge         | Yes       | -       | `HTMLElement`          |
 | `fromAngle`      | Gauge start angle in degrees                                   | No       | 220       | `number`          |
 | `toAngle`      | Gauge end angle in degrees                                       | No       | 500       | `number`          |

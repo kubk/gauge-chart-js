@@ -2,8 +2,6 @@ import { requestTimeout } from './request-timeout';
 import { calcCoordinatesFromAngle, cubicBezier, Easing } from './math';
 
 export interface Config {
-  // Gauge value
-  value: number;
   // The HTML element that act as a container for the gauge
   container: HTMLElement;
   // Gauge start angle in degrees
@@ -87,33 +85,6 @@ export class Gauge {
     root.setAttribute('viewBox', '0 0 100 100');
     root.style.position = 'absolute';
     return root;
-  }
-
-  public draw(options: AnimationOptions = {}): Promise<void> {
-    const { fromAngle, value } = this.config;
-    // Nothing to draw
-    if (value === 0) {
-      return Promise.resolve();
-    }
-    const { easing, animationDelay, animationDuration } = this.getAnimation(options);
-    let animationStep = 0;
-    const lastAngle = fromAngle + value;
-    const easingStep = this.maxEasing / (lastAngle - fromAngle);
-    const animate = animationDuration > 0;
-
-    return new Promise(resolve => {
-      for (let angle = fromAngle; angle < lastAngle; angle++) {
-        const timeout = animate
-          ? easing(easingStep * animationStep) * animationDuration
-          : 0;
-        requestTimeout(() => {
-          this.renderCircle(angle, animationStep++);
-          if (angle === lastAngle - 1) {
-            resolve();
-          }
-        }, animationDelay + timeout);
-      }
-    });
   }
 
   private getAnimation(options: AnimationOptions) {
