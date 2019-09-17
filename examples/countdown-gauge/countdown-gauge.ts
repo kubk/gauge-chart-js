@@ -8,7 +8,11 @@ function updateTimerNode(value: number) {
   timer.innerHTML = value.toString();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function wait(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
   let timer = 5;
   updateTimerNode(timer);
   const container = document.querySelector('.countdown-gauge') as HTMLElement;
@@ -35,30 +39,26 @@ document.addEventListener('DOMContentLoaded', () => {
     color: '#fd9eaa'
   });
 
-  mainGauge.setValue(maxValue, { animationDuration: 0 }).then(() => {
-    setTimeout(() => {
-      const interval = setInterval(() => {
-        timer--;
-        updateTimerNode(timer);
-      }, 1000);
-      mainGauge
-        .setValue(0, { easing: linear, })
-        .then(() => {
-          clearInterval(interval);
-          timer = 0;
-          updateTimerNode(timer);
-          return mainGauge.setValue(maxValue, {
-            easing: easeIn,
-            animationDelay: 600,
-            animationDuration: 600
-          });
-        })
-        .then(() => {
-          setTimeout(() => {
-            timer = 5;
-            updateTimerNode(timer);
-          }, 500);
-        });
-    }, 2000);
+  await mainGauge.setValue(maxValue, { animationDuration: 0 });
+  await wait(2000);
+  const interval = setInterval(() => {
+    timer--;
+    updateTimerNode(timer);
+  }, 1000);
+
+  await mainGauge.setValue(0, { easing: linear });
+  clearInterval(interval);
+  timer = 0;
+  updateTimerNode(timer);
+
+  await mainGauge.setValue(maxValue, {
+    easing: easeIn,
+    animationDelay: 600,
+    animationDuration: 600
   });
+
+  await wait(500);
+  timer = 5;
+  updateTimerNode(timer);
 });
+
