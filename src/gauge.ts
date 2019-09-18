@@ -31,7 +31,7 @@ export interface GaugeItem {
     relativeLeft: number;
     // Difference between gauge top coordinate and parent's top coordinate
     relativeTop: number;
-    // Angle of the element
+    // Rotation angle of the element
     angle: number;
   };
 }

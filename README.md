@@ -50,6 +50,13 @@ Easing functions cheat sheet: https://matthewlein.com/tools/ceaser
 | `color`|  Gauge color supported by SVG's [fill](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes) attribute                         | No       | -       | `string`          |
 | `colors`|  Gauge colors supported by SVG's [fill](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes) attribute                       | No       | -       | `string[]`          |
 
+### Programmatic API
+Available methods:
+- `setValue(value)` Sets chart value.
+- `getElementAtValue(value)` Returns SVG element for given `value` with additional information: angle and relative position to its parent container.
+- `insertAdjacentToRoot(where, html)` Inserts HTML to SVG root. Can be used for custom labels.
+- `dispose()` Disposes chart.
+
 ### How to integrate it with framework X?
 The library is framework-agnostic and do not require any framework-specific integration. If you are using Angular make sure chart is rendered outside zone.js:
 ```typescript
