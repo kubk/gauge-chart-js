@@ -1,4 +1,4 @@
-import { calcCoordinatesFromAngle, Gauge, AnimationOptions } from '../../src';
+import { calcCoordinatesFromAngle, Gauge, AnimationOptions, Config } from '../../src';
 
 function renderLabel(gauge: Gauge, label: string, color: string) {
   const { metadata } = gauge.getElementAtValue(0);
@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const toAngle = 270;
   const maxValue = toAngle - fromAngle;
   const container = document.querySelector('.multiple-gauge') as HTMLElement;
-  const sharedConfig = {
+  const sharedConfig: Config = {
     fromAngle,
     toAngle,
-    container,
+    container
   };
   const backgroundConfig = {
     ...sharedConfig,
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     color: '#8067dc',
     gaugeRadius: 45
   });
-  gaugeHumanMain.setValue(maxValue * 0.69);
+  gaugeHumanMain.setValue(10);
 
   const gaugeDistributionBackground = new Gauge({
     ...backgroundConfig,

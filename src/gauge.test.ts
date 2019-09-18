@@ -39,4 +39,23 @@ describe('Gauge', () => {
       cb();
     });
   });
+
+  it('should be disposable', cb => {
+    const gauge = new Gauge({
+      container,
+      color: '#f00'
+    });
+    let htmlAfterSetValue: string;
+    gauge
+      .setValue(50)
+      .then(() => {
+        htmlAfterSetValue = document.body.innerHTML;
+        gauge.dispose();
+        return gauge.setValue(10);
+      })
+      .then(() => {
+        expect(htmlAfterSetValue).toBe(document.body.innerHTML);
+        cb();
+      });
+  });
 });

@@ -46,6 +46,8 @@ export class Gauge {
   private readonly root: SVGElement;
   private readonly leftTopOffset = 50;
   private readonly maxEasing = 1;
+  private isAnimating = false;
+  private isDisposed = false;
 
   constructor(config: Config) {
     if (!config.container) {
@@ -102,6 +104,9 @@ export class Gauge {
   }
 
   public setValue(value: number, options: AnimationOptions = {}): Promise<void> {
+    if (this.isDisposed || this.isAnimating) {
+      return Promise.resolve();
+    }
     const { fromAngle, toAngle } = this.config;
     const { easing, animationDuration, animationDelay } = this.getAnimation(options);
     const maximumAllowedValue = toAngle - fromAngle;
@@ -115,17 +120,23 @@ export class Gauge {
       return Promise.resolve();
     }
 
+    this.isAnimating = true;
     if (diff < 0) {
       return new Promise(resolve => {
         const reversed = Array.from(this.root.childNodes)
           .slice(diff)
           .reverse();
         reversed.forEach((child, i) => {
+          if (this.isDisposed) {
+            resolve();
+            return;
+          }
           const timeFraction = (i * this.maxEasing) / reversed.length;
           const timeout = animate ? easing(timeFraction) * animationDuration : 0;
           requestTimeout(() => {
             this.root.removeChild(child);
-            if (i === Math.abs(diff) - 1) {
+            if (i === Math.floor(Math.abs(diff)) - 1) {
+              this.isAnimating = false;
               resolve();
             }
           }, animationDelay + timeout);
@@ -141,12 +152,17 @@ export class Gauge {
 
     return new Promise(resolve => {
       for (let angle = fromAngle + childCount; angle < lastAngle; angle++) {
+        if (this.isDisposed) {
+          resolve();
+          break;
+        }
         const delay = animate
           ? easing(easingStep * animationStep) * animationDuration
           : 0;
         requestTimeout(() => {
           this.renderCircle(angle, colorStep++);
-          if (angle === lastAngle - 1) {
+          if (angle === Math.floor(lastAngle) - 1) {
+            this.isAnimating = false;
             resolve();
           }
         }, delay + animationDelay);
@@ -191,5 +207,10 @@ export class Gauge {
     circle.setAttribute('data-angle', angle.toString());
     circle.setAttribute('fill', color);
     this.root.appendChild(circle);
+  }
+
+  public dispose(): void {
+    this.isDisposed = true;
+    this.isAnimating = false;
   }
 }
