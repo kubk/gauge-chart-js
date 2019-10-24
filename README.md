@@ -3,7 +3,7 @@
 A tiny (<2kb gzipped) library for rendering gauge charts. Supports conical/polar gradients, animation timing functions, custom labels/tooltips. No external dependencies required.
 
 ### Examples:
-| [Conical / Polar gradient](./examples/conical-gradient) | [Multiple gauges](./examples/multiple-gauge) | [Countdown circle](./examples/countdown-gauge) |
+| [Conical / Polar gradient](./examples/conical-gradient) | [Multiple gauges](./examples/multiple-gauges) | [Countdown circle](./examples/countdown-gauge) |
 | ------------- | -------------| -------------|
 | <img src="/assets/conical-polar.gif" width="249.2" height="256.2">       | <img src="/assets/multiple-gauges.gif" width="261" height="256.2"> | <img src="/assets/countdown-circle.gif" width="249.2" height="256.2"> |
 
@@ -34,7 +34,7 @@ const gauge = new Gauge({
 })
 ```
 
-Easing functions cheat sheet: https://matthewlein.com/tools/ceaser
+Easing functions cheat sheet: https://cubic-bezier.com/#.17,.67,.83,.67
 
 ### Options
 | Name           | Description                                                      | Required  | Default value     | Type   |
@@ -71,3 +71,9 @@ class ExampleComponent implements OnInit {
   }
 }
 ```
+
+### Run examples:
+- `cd examples`
+- `npm run example conical-gradient/conical-gradient.html`
+- `npm run example countdown-gauge/countdown-gauge.html`
+- `npm run example multiple-gauges/multiple-gauges.html`
