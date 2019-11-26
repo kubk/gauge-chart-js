@@ -2,10 +2,12 @@
 
 A tiny (<2kb gzipped) library for rendering gauge charts. Supports conical/polar gradients, animation timing functions, custom labels/tooltips. No external dependencies required.
 
-### Examples:
+### Examples
 | [Conical / Polar gradient](./examples/conical-gradient) | [Multiple gauges](./examples/multiple-gauges) | [Countdown circle](./examples/countdown-gauge) |
 | ------------- | -------------| -------------|
 | <img src="/assets/conical-polar.gif" width="249.2" height="256.2">       | <img src="/assets/multiple-gauges.gif" width="261" height="256.2"> | <img src="/assets/countdown-circle.gif" width="249.2" height="256.2"> |
+
+These are GIFs, therefore FPS is low.
 
 ### Installation
 `npm install gauge-chart-js`
