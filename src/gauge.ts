@@ -1,7 +1,7 @@
 import { requestTimeout } from './request-timeout';
 import { calcCoordinatesFromAngle, cubicBezier, Easing } from './math';
 
-export interface Config {
+export type Config = {
   // The HTML element that act as a container for the gauge
   container: HTMLElement;
   // Gauge start angle in degrees
@@ -24,7 +24,7 @@ export interface Config {
   colors?: string[];
 }
 
-export interface GaugeItem {
+export type GaugeItem = {
   element: SVGCircleElement;
   metadata: {
     // Difference between gauge left coordinate and parent's left coordinate
@@ -57,7 +57,7 @@ export class Gauge {
     }
     if (!config.colors && !config.color) {
       throw new Error(
-        'Color is not specified. Please use `color` or `colors` property to specify the color'
+        'Color is not specified. Use `color` or `colors` property to specify the color'
       );
     }
 
@@ -103,7 +103,7 @@ export class Gauge {
     };
   }
 
-  public setValue(value: number, options: AnimationOptions = {}): Promise<void> {
+  setValue(value: number, options: AnimationOptions = {}): Promise<void> {
     if (this.isDisposed || this.isAnimating) {
       return Promise.resolve();
     }
@@ -171,11 +171,11 @@ export class Gauge {
     });
   }
 
-  public insertAdjacentToRoot(where: InsertPosition, html: string): void {
+  insertAdjacentToRoot(where: InsertPosition, html: string): void {
     this.config.container.insertAdjacentHTML(where, html);
   }
 
-  public getElementAtValue(value: number): GaugeItem {
+  getElementAtValue(value: number): GaugeItem {
     const circle = this.root.childNodes[value] as SVGCircleElement | undefined;
     if (!circle) {
       throw new Error(`Element with value ${value} not found`);
@@ -209,7 +209,7 @@ export class Gauge {
     this.root.appendChild(circle);
   }
 
-  public dispose(): void {
+  dispose(): void {
     this.isDisposed = true;
     this.isAnimating = false;
   }

@@ -12,10 +12,10 @@ export function cubicBezier(x1: number, y1: number, x2: number, y2: number): Eas
   };
 }
 
-export interface Point {
+export type Point = {
   x: number;
   y: number;
-}
+};
 
 export function calcCoordinatesFromAngle(radius: number, angle: number): Point {
   const theta = Math.PI - (angle * Math.PI) / 180;
