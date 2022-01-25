@@ -8,7 +8,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "bundlesize": "bundlesize",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc",
     "build": "rollup -c",
     "prepare": "npm run build"
   },
