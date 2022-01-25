@@ -1,15 +1,21 @@
 {
+  "include": ["src", "types"],
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "module": "esnext",
+    "lib": ["dom", "esnext"],
+    "importHelpers": true,
+    "outDir": "dist",
+    "declarationDir": "types",
     "declaration": true,
-    "outDir": "./lib",
+    "emitDeclarationOnly": true,
+    "sourceMap": true,
+    "rootDir": "./src",
     "strict": true,
-    "lib": [
-      "dom",
-      "es2018"
-    ]
-  },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
 }

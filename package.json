@@ -1,18 +1,18 @@
 {
   "name": "gauge-chart-js",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "A tiny library for rendering gauge charts. Supports conical/polar gradients, animation timing functions, custom labels/tooltips.",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
+  "module": "dist/gauge-chart-js.esm.js",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
     "bundlesize": "bundlesize",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "typecheck": "tsc --noEmit",
-    "lint": "npx tslint -t stylish --project tsconfig.json",
-    "build": "npm run typecheck && parcel build --experimental-scope-hoisting src/index.ts --no-source-maps --detailed-report"
+    "build": "rollup -c",
+    "prepare": "npm run build"
   },
-  "types": "lib/index.d.ts",
+  "types": "dist/gauge-chart-js.d.ts",
   "keywords": [
     "gauge",
     "chart",
@@ -23,21 +23,25 @@
   "author": "http://github.com/kubk",
   "repository": "https://github.com/kubk/gauge-chart-js",
   "license": "ISC",
-  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^24.0.18",
     "bundlesize": "^0.18.0",
     "jest": "^24.9.0",
-    "parcel": "^1.12.3",
     "prettier": "^1.18.2",
     "ts-jest": "^24.1.0",
-    "tslint": "^5.20.0",
-    "typescript": "^3.6.3"
+    "typescript": "^4.5.5"
   },
   "bundlesize": [
     {
       "path": "./dist/index.js",
       "maxSize": "2 kB"
     }
-  ]
+  ],
+  "dependencies": {
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "rollup": "^2.66.0",
+    "rollup-plugin-dts": "^4.1.0",
+    "rollup-plugin-terser": "^7.0.2"
+  }
 }
