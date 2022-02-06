@@ -7,3 +7,4 @@ examples/node_modules
 examples/.cache
 examples/dist
 types
+example/node_modules

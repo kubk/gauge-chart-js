@@ -3,7 +3,7 @@
 A tiny (<2kb gzipped) library for rendering gauge charts. Supports conical/polar gradients, animation timing functions, custom labels/tooltips. No external dependencies required.
 
 ### Examples
-| [Conical / Polar gradient](./examples/conical-gradient) | [Multiple gauges](./examples/multiple-gauges) | [Countdown circle](./examples/countdown-gauge) |
+| [Conical (Polar) gradient](example/src/conical-gradient) | [Multiple gauges + labels](example/src/multiple-gauges) | [Countdown circle](example/src/countdown-gauge) |
 | ------------- | -------------| -------------|
 | <img src="/assets/conical-polar.gif" width="249.2" height="256.2">       | <img src="/assets/multiple-gauges.gif" width="261" height="256.2"> | <img src="/assets/countdown-circle.gif" width="249.2" height="256.2"> |
 
@@ -75,7 +75,10 @@ class ExampleComponent implements OnInit {
 ```
 
 ### Run examples:
-- `cd examples`
-- `npm run example conical-gradient/conical-gradient.html`
-- `npm run example countdown-gauge/countdown-gauge.html`
-- `npm run example multiple-gauges/multiple-gauges.html`
+- `cd example`
+- npm run dev
+- Conical gauge: http://localhost:3000/conical-gradient/
+- React + shadowed center: http://localhost:3000/progress-with-shadow-chart/
+- Multiple gauges + labels: http://localhost:3000/multiple-gauges/
+- Countdown gauge: http://localhost:3000/countdown-gauge/
+

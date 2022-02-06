@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .conical-gauge-wrapper {
   $chart-size: 400px;
   $chart-padding: 100px;
@@ -17,8 +19,8 @@
     position: relative;
     width: $chart-size;
     height: $chart-size;
-    left: $chart-padding / 2;
-    top: $chart-padding / 2;
+    left: math.div($chart-padding, 2);
+    top: math.div($chart-padding, 2);
   }
 
   .label {

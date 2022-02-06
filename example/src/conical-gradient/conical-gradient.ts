@@ -1,6 +1,6 @@
-import { cubicBezier, Gauge } from '../../src';
-// @ts-ignore
-const gradstop = require('gradstop');
+import './conical-gradient.scss';
+import { cubicBezier, Gauge } from '../../../src';
+import gradstop from 'gradstop';
 
 function clamp(from: number, to: number, value: number) {
   if (value < from) {
