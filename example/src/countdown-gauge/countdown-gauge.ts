@@ -1,4 +1,5 @@
-import { cubicBezier, Gauge } from '../../src';
+import { cubicBezier, Gauge } from '../../../src';
+import './countdown-gauge.scss';
 
 const linear = cubicBezier(0, 0, 1, 1);
 const easeIn = cubicBezier(0, 0, 0.2, 1);
