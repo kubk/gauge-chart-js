@@ -50,7 +50,10 @@ export const ProgressWithShadowChart = (props: Props) => {
     });
     gaugeMain.setValue(value);
 
-    return () => {};
+    return () => {
+      gaugeBackground.dispose();
+      gaugeMain.dispose();
+    };
   }, []);
 
   return (

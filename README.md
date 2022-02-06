@@ -31,7 +31,7 @@ import { cubicBezier, Gauge } from 'gauge-chart-js';
 
 const easeIn = cubicBezier(0, 0, 0.2, 1);
 const gauge = new Gauge({
-  ...
+  // ...
   easing: easeIn
 })
 ```
@@ -76,9 +76,9 @@ class ExampleComponent implements OnInit {
 
 ### Run examples:
 - `cd example`
-- npm run dev
-- Conical gauge: http://localhost:3000/conical-gradient/
-- React + shadowed center: http://localhost:3000/progress-with-shadow-chart/
-- Multiple gauges + labels: http://localhost:3000/multiple-gauges/
-- Countdown gauge: http://localhost:3000/countdown-gauge/
+- `npm run dev`
+- Open demo Conical gauge: http://localhost:3000/conical-gradient/
+- Open demo React + shadowed center: http://localhost:3000/progress-with-shadow-chart/
+- Open demo Multiple gauges + labels: http://localhost:3000/multiple-gauges/
+- Open demo Countdown gauge: http://localhost:3000/countdown-gauge/
 
