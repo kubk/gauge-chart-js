@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { calcCoordinatesFromAngle } from './math';
 
 describe('calCoordinatesFromAngle', () => {

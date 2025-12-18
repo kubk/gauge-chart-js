@@ -1,61 +1,59 @@
+import { beforeEach, describe, expect, it } from 'vitest';
 import { Gauge } from './gauge';
 
 const initialHtml = `<div class="gauge"></div>`;
-document.body.innerHTML = initialHtml;
+
+function getContainer() {
+  return document.querySelector('.gauge') as HTMLElement;
+}
 
 describe('Gauge', () => {
-  const container = document.querySelector('.gauge') as HTMLElement;
+  beforeEach(() => {
+    document.body.innerHTML = initialHtml;
+  });
 
   it('should throw when required arguments are missing', () => {
     expect(() => {
-      const gauge = new Gauge({} as any);
+      new Gauge({} as any);
     }).toThrow();
 
     expect(() => {
-      const gauge = new Gauge({ container });
+      new Gauge({ container: getContainer() });
     }).toThrow();
   });
 
-  it('should render gauge', cb => {
+  it('should render gauge', async () => {
     const gauge = new Gauge({
-      container,
-      color: '#f00'
+      container: getContainer(),
+      color: '#f00',
+      animationDuration: 0
     });
-    gauge.setValue(50).then(() => {
-      expect(document.body.innerHTML).not.toBe(initialHtml);
-      cb();
-    });
+    await gauge.setValue(50);
+    expect(document.body.innerHTML).not.toBe(initialHtml);
   });
 
-  it('should allow to get element metadata', cb => {
+  it('should allow to get element metadata', async () => {
     const gauge = new Gauge({
-      container,
-      color: '#f00'
+      container: getContainer(),
+      color: '#f00',
+      animationDuration: 0
     });
-    gauge.setValue(50).then(() => {
-      const point1 = gauge.getElementAtValue(1);
-      const point2 = gauge.getElementAtValue(40);
-      expect(point1.metadata.angle).toBeLessThan(point2.metadata.angle);
-      cb();
-    });
+    await gauge.setValue(50);
+    const point1 = gauge.getElementAtValue(1);
+    const point2 = gauge.getElementAtValue(40);
+    expect(point1.metadata.angle).toBeLessThan(point2.metadata.angle);
   });
 
-  it('should be disposable', cb => {
+  it('should be disposable', async () => {
     const gauge = new Gauge({
-      container,
-      color: '#f00'
+      container: getContainer(),
+      color: '#f00',
+      animationDuration: 0
     });
-    let htmlAfterSetValue: string;
-    gauge
-      .setValue(50)
-      .then(() => {
-        htmlAfterSetValue = document.body.innerHTML;
-        gauge.dispose();
-        return gauge.setValue(10);
-      })
-      .then(() => {
-        expect(htmlAfterSetValue).toBe(document.body.innerHTML);
-        cb();
-      });
+    await gauge.setValue(50);
+    const htmlAfterSetValue = document.body.innerHTML;
+    gauge.dispose();
+    await gauge.setValue(10);
+    expect(htmlAfterSetValue).toBe(document.body.innerHTML);
   });
 });
