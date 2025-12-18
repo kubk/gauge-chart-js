@@ -4,6 +4,9 @@
   "description": "A tiny library for rendering gauge charts. Supports conical/polar gradients, animation timing functions, custom labels/tooltips.",
   "main": "dist/index.js",
   "module": "dist/gauge-chart-js.esm.js",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
